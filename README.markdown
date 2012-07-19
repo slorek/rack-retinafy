@@ -1,18 +1,18 @@
-# Retinafy
+# Rack::Retinafy
 
-Retinafy is a Rack middleware to automatically re-route incoming requests for images to an appropriate source file, depending on whether the client device has a 'Retina', or high pixel density screen.
+Rack::Retinafy is a Rack middleware to automatically re-route incoming requests for images to an appropriate source file, depending on whether the client device has a 'Retina', or high pixel density screen.
 
 It has been assumed that it is preferable to manually generate 1x and 2x assets rather than to do this automatically. This allows for greater control over sharpening, compression and and colour palette, for example. It is hoped that automatic generation can be added as an option later on.
 
 ## Installation
 
-For Rails apps, copy retinafy.rb into the app/middleware directory. Create a new initializer in config/initializers with the following line:
+For Rails apps, copy retinafy.rb into the app/middleware/rack directory. Create a new initializer in config/initializers with the following line:
 
-    Rails.application.config.middleware.use Retinafy
+    Rails.application.config.middleware.use Rack::Retinafy
 
 ## Usage
 
-Retinafy requires a cookie to be sent with each request to tell it the pixel ratio of the client device. To do this, add the following JavaScript in the &lt;head&gt; section of your page, before any CSS or other JavaScript:
+Rack::Retinafy requires a cookie to be sent with each request to tell it the pixel ratio of the client device. To do this, add the following JavaScript in the &lt;head&gt; section of your page, before any CSS or other JavaScript:
   
     <script type="text/javascript">
       document.cookie = 'device_pixel_ratio=' + window.devicePixelRatio + '; path=/';
